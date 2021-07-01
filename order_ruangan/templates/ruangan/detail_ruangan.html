@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <div class="row">
+        <div>
+            <h3>Ruangan {{ data.name }}</h3>
+            {% comment %} <h3>Ruangan {{ data.pk }}</h3> {% endcomment %}
+        </div>
+        <div class="col-3 d-flex">
+            <a class="btn btn-primary" href="{% url 'update' data.pk %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'delete' data.id %}">Delete</a>
+        </div>
+    </div>
+    <small>
+        {{ data.created_on.date }} |&nbsp;
+        Categories:&nbsp;
+        {% for category in data.categories.all %}
+        <a href="{% url 'ruangan_category' category.name %}">
+            {{ category.name }}
+        </a>&nbsp;
+        {% endfor %}
+    </small>
+    <p>{{ data.description | linebreaks }}</p>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h3>Pinjam Ruangan</h3>
+    <a class="btn btn-primary" href="{% url 'create_ruangan' %}">Create</a>
+    <div class="main">
+    <br>
+        {% for data in dataset %}
+        <div class="row">
+            <a href="{% url 'ruangan_detail' data.pk %}">
+                <h3>Ruangan {{ data.name }}</h3>
+            </a>
+        </div>
+        <div class="row">
+            <small>
+            {% for category in data.categories.all %}
+            <a href="{% url 'ruangan_category' category.name %}">
+                {{ category.name }}
+            </a>&nbsp;
+            {% endfor %}
+            </small>
+            <p>{{ data.description }}</p>
+        </div>
+        <hr/>
+
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
