@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'order_ruangan'
+    'order_ruangan',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
